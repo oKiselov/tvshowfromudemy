@@ -31,27 +31,22 @@ const ShowDetails = ({show}) => {
     )
 }
 
-  ShowDetails.getInitialProps = async({query}) => {
+/*   ShowDetails.getInitialProps = async({query}) => {
      const {showId} = query;
      const response = await axios.get(`https://api.tvmaze.com/shows/${showId}?embed=cast`);
      return {
          show: response.data
      }
- }
+ } */
  
 export default ShowDetails;
 
-/* export async function getStaticPaths({query}) {
-    return axios
-    .get(`https://restcountries.eu/rest/v2/all`)
-    .then(response => {
-        return response.data.map((ent, index) => ent.alpha2Code.toLowerCase())
-    }).then((codes) => {
-        return axios.get(`https://api.tvmaze.com/schedule/full`).then(response => {return {
-            codes, 
+ export async function getStaticPaths({query}) {
+    return axios.get(`https://api.tvmaze.com/schedule/full`).then(response => {return {
+            codes: ['us', 'br'], 
             shows: response.data.map(e => e._embedded.show)
         }
-    })}).then(response => {
+    }).then(response => {
         let paths = [];
       
         response.codes.forEach(code => {
@@ -82,4 +77,4 @@ export default ShowDetails;
                 show: response.data
             }
         }
-     } */
+     } 

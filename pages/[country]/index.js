@@ -42,7 +42,7 @@ const renderShows = () => {
     )
 }
 
-  Home.getInitialProps = async (context) => {
+/*   Home.getInitialProps = async (context) => {
      const country = context.query.country || 'us';
      const response = await axios.get(`https://api.tvmaze.com/schedule?country=${country}&date=2014-12-01`);
 
@@ -50,12 +50,12 @@ const renderShows = () => {
          shows: response.data,
          country
      }
- } 
+ }  */
 
 export default Home;
-/* 
 
- export async function getStaticPaths() {
+
+/*  export async function getStaticPaths() {
     return axios
         .get(`https://restcountries.eu/rest/v2/all`)
         .then(response => {
@@ -69,8 +69,22 @@ export default Home;
             });
             return {paths, fallback: false}; 
         })
-} 
+}  */
 
+export async function getStaticPaths() {
+
+    const countryCodes = ['us', 'br'];
+    let paths = [];
+
+    countryCodes.forEach(el => {
+        paths.push({
+            params: {
+                country: el
+            }
+        });
+    })
+    return {paths, fallback: false}; 
+} 
 
  export async function getStaticProps ({ params }) {
     const country = params.country || 'us';
@@ -82,4 +96,4 @@ export default Home;
             } 
         }
     
-}; */
+}; 
