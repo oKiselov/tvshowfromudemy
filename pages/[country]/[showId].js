@@ -30,16 +30,16 @@ const ShowDetails = ({show}) => {
         </div>
     )
 }
+
+ ShowDetails.getInitialProps = async({query}) => {
+     const {showId} = query;
+     const response = await axios.get(`https://api.tvmaze.com/shows/${showId}?embed=cast`);
+     return {
+         show: response.data
+     }
+ } 
  
 export default ShowDetails;
-
-export async function getServerSideProps({query}){
-    const {showId} = query;
-    const response = await axios.get(`https://api.tvmaze.com/shows/${showId}?embed=cast`);
-    return {
-        show: response.data
-    }
-} 
 /* 
  export async function getStaticPaths() {
     let paths = [
@@ -73,4 +73,5 @@ export async function getServerSideProps({query}){
                 show: response.data
             }
         }
-     }  */
+     } 
+ */
