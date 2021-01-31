@@ -41,32 +41,28 @@ const ShowDetails = ({show}) => {
  
 export default ShowDetails;
 
- export async function getStaticPaths({query}) {
-    return axios.get(`https://api.tvmaze.com/schedule/full`).then(response => {return {
-            codes: [ 'br'], 
-            shows: response.data.map(e => e._embedded.show)
+ export async function getStaticPaths() {
+    let paths = [
+        {
+            params: { 
+                country: 'br',
+                showId: '10820'
+            }
+        },
+        {
+            params: { 
+                country: 'br',
+                showId: '2873'
+            }
+        },
+        {
+            params: { 
+                country: 'ua',
+                showId: '5221'
+            }
         }
-    }).then(response => {
-        let paths = [];
-      
-        response.codes.forEach(code => {
-            let countryShows = response.shows.filter(el => { 
-                if(el.network == null){
-                    return false;
-                }
-                return el.network.country.code.toLowerCase() == code;
-            });           
-            countryShows.forEach(cs => {
-                paths.push({
-                    params: { 
-                        country: code,
-                        showId: cs.id.toString()
-                    }
-                });
-            })
-        });
-        return {paths, fallback: false}; 
-    });
+    ];
+    return {paths, fallback: false}; 
 }
 
  export async function getStaticProps({params}) {

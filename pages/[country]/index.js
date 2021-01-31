@@ -73,7 +73,7 @@ export default Home;
 
 export async function getStaticPaths() {
 
-    const countryCodes = ['br'];
+    const countryCodes = ['br', 'ua'];
     let paths = [];
 
     countryCodes.forEach(el => {
