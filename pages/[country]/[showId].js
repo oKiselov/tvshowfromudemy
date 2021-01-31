@@ -43,7 +43,7 @@ export default ShowDetails;
 
  export async function getStaticPaths({query}) {
     return axios.get(`https://api.tvmaze.com/schedule/full`).then(response => {return {
-            codes: ['us', 'br'], 
+            codes: [ 'br'], 
             shows: response.data.map(e => e._embedded.show)
         }
     }).then(response => {
