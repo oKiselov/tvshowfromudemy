@@ -6,7 +6,7 @@ const Header = () => {
     
 
     return (
-        <div className="header">Header. Time: {Date.now()}
+        <div className="header">Header. Time: {Date()}
 
             <style jsx>{`{
                 .header {
