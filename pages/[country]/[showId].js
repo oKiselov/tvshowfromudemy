@@ -31,6 +31,9 @@ const ShowDetails = ({show}) => {
     )
 }
 
+export default ShowDetails;
+
+/*
  ShowDetails.getInitialProps = async({query}) => {
      const {showId} = query;
      const response = await axios.get(`https://api.tvmaze.com/shows/${showId}?embed=cast`);
@@ -39,8 +42,8 @@ const ShowDetails = ({show}) => {
      }
  } 
  
-export default ShowDetails;
-/* 
+ */
+ 
  export async function getStaticPaths() {
     let paths = [
         {
@@ -62,7 +65,7 @@ export default ShowDetails;
             }
         }
     ];
-    return {paths, fallback: true}; 
+    return {paths, fallback: false}; 
 }
 
  export async function getStaticProps({params}) {
@@ -74,4 +77,3 @@ export default ShowDetails;
             }
         }
      } 
- */
