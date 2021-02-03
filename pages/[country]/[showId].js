@@ -5,12 +5,12 @@ import Header from '../../components/Header';
 
 const ShowDetails = ({show}) => {
 
-    const { name, image, summary, _embedded} = show;
-
     if (show == undefined){
         return <div></div>;
     }
-    
+
+    const { name, image, summary, _embedded} = show;
+
     return (
         <div className="show-details">
             <Header/>
@@ -35,20 +35,15 @@ const ShowDetails = ({show}) => {
     )
 }
 
-export default ShowDetails;
-
- /*
- ShowDetails.getInitialProps = async({query}) => {
+/*  ShowDetails.getInitialProps = async({query}) => {
      const {showId} = query;
-
-     console.log(query);
      const response = await axios.get(`https://api.tvmaze.com/shows/${showId}?embed=cast`);
      return {
          show: response.data
      }
- } 
-  */
-
+ }  */
+ 
+export default ShowDetails;
 
  export async function getStaticPaths() {
     let paths = [
@@ -83,4 +78,4 @@ export default ShowDetails;
             }
         }
      } 
-
+ 
