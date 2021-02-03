@@ -37,7 +37,7 @@ const ShowDetails = ({show}) => {
 
 export default ShowDetails;
 
-
+ /*
  ShowDetails.getInitialProps = async({query}) => {
      const {showId} = query;
 
@@ -47,9 +47,9 @@ export default ShowDetails;
          show: response.data
      }
  } 
- 
+  */
 
- /*
+
  export async function getStaticPaths() {
     let paths = [
         {
@@ -83,4 +83,4 @@ export default ShowDetails;
             }
         }
      } 
- */
+
