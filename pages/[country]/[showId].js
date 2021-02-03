@@ -7,6 +7,10 @@ const ShowDetails = ({show}) => {
 
     const { name, image, summary, _embedded} = show;
 
+    if (show == undefined){
+        return <div></div>;
+    }
+    
     return (
         <div className="show-details">
             <Header/>
@@ -33,7 +37,7 @@ const ShowDetails = ({show}) => {
 
 export default ShowDetails;
 
-/*
+
  ShowDetails.getInitialProps = async({query}) => {
      const {showId} = query;
      const response = await axios.get(`https://api.tvmaze.com/shows/${showId}?embed=cast`);
@@ -42,8 +46,8 @@ export default ShowDetails;
      }
  } 
  
- */
- 
+
+ /*
  export async function getStaticPaths() {
     let paths = [
         {
@@ -77,3 +81,4 @@ export default ShowDetails;
             }
         }
      } 
+ */
