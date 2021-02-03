@@ -40,6 +40,8 @@ export default ShowDetails;
 
  ShowDetails.getInitialProps = async({query}) => {
      const {showId} = query;
+
+     console.log(query);
      const response = await axios.get(`https://api.tvmaze.com/shows/${showId}?embed=cast`);
      return {
          show: response.data
